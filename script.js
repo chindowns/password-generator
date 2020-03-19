@@ -17,27 +17,66 @@ function writePassword() {
 
 }
 
-// Ask how many characters you want to use between 8 and 128
-var numChar = 0;
+// Setting the variables we want to track
+var passLength = 0;
+var specialChar = true;
+var numbers = true;
+var upperCase = true;
+var options = true;
 
-// Check if the character count is between 8 and 128 characters
-while (numChar < 8 || numChar > 128) {
-  numChar = prompt("Please enter the number of characters you want for your password. Please select a number between 8 and 128.");
+// Timeout function for alerting cancelation of the process
+var canelled;
+var arg = "";
+
+function cancelTimeout(arg) {
+  cancelled = setTimeout(cancelAlert(arg), 3000);
 }
 
-// Ask to check at least 3 of the 4 types of characters to use 
-var n
+function cancelAlert(arg) {
+  alert(arg);
+}
 
-// Verify at least 3 of the 4 characters were selected.
+// Set the length of your password.  It must be at least 8 characters and no more than 128.
+function askPassLength() {
+  while (passLength < 8 || passLength > 128) {
+    passLength = prompt("Set the length of your randomly generated password.\nIt has to be between 8 and 128.");
+    console.log(passLength);
+
+    if (passLength === null) { 
+      alert("You cancelled the generation of your secure password.");
+      break;
+    }
+         
+    else if (passLength < 8 || passLength > 128) {
+      passLength = prompt("You must enter a number between 8 and 128!");
+    }
+  }
+}
+
+
+
+// Check if the character count is between 8 and 128 characters
+
+
+// Ask how many special characters to include 
+// var numSpecialChar = prompt("How many special characters would you like to include?");
+// var numNumbers = prompt("How many numbers would you like to include?");
+// var numUpperCase = prompt("How many upper case letters would you like to use?");
+
+// Verify at least 3 of the 4 character options were selected.
 
  
 // Verify that the total number of characters is less 128
 
 
 // Generate New Pasword and display it to the screen.
-
-
+function generatePassword() {
+  askPassLength();
 }
 
 // Add event listener to generate button
-generateBtn.addEventListener("click"","  writePassword);
+// generateBtn.addEventListener("click" ','  writePassword);
+
+document.getElementById("generate").addEventListener("click", generatePassword());
+
+
