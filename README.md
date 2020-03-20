@@ -26,8 +26,8 @@ Then the password box is displayed with the generated password.
 - CSS - styles were applied to ensure a responsive, clean and polished user interface.
 - JavaScript - Powers the application using multiple function call backs, arrays, variables and DOM manipulation.
 - Git - version control system to track changes to source code
-- GITHub - hosts reository taht can be deployed to GitHub Pages
-- Bootstrap - Used the Bootstrap framework to build the Portfolio pages
+- GITHub - hosts reository that can be deployed to GitHub Pages
+- Bootstrap - Used the Bootstrap framework to make the page responsive
 
 
 ## Code Snippet
