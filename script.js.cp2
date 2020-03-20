@@ -27,23 +27,15 @@ function askPassLength() {
     }
          
     else if (passLength < 8 || passLength > 128) {
-      passLength = prompt("You must enter a number between 8 and 128!");
+      passLenActual = prompt("You must enter a number between 8 and 128!");
+      passLength = passLenActual * 2;
     }
   }
 }
 
 function generatePassword(){
-  // Clear password length then ask
-  passLength=0;
-  askPassLength();
-
-  // cancels generation request if the user selects cancel in askPassLength function
-  if (passLength === null) { 
-    return;
-  }
-
-  document.getElementById("begin").style.display = "none";
   document.getElementById("password").style.display = "block";
+  askPassLength();
 
   // Clearing passwd
   passwd = "";
@@ -81,20 +73,45 @@ function generatePassword(){
 
   }
   
-  // Shuffle password string to ensure the characters are random
-  shufflePasswdStr();
+  // shufflePasswdStr();
   return passwd;
 }
 
-function shufflePasswdStr() {
-  var arr = passwd.split('');           // Convert String to array
-  
-  arr.sort(function() {
-    return 0.5 - Math.random();
-  });  
-  passwd = arr.join('');                // Convert Array to string
-  return passwd;                        // Return shuffled string
-}
+// Function shuffles the password string characters
+// function shufflePasswdStr() {
+//   // Convert passwd string to an array
+//   var arr = passwd.split('');
+
+//   console.log("Password array is " + arr);
+
+//   for (var i = 1; i < passwd.length; i++){
+// console.log(passwd.length + " is the number of iterations");
+
+//     // generates a random index
+//     var charI = arr[Math.floor(Math.random()*arr.length)];
+//     if (charI === 0) {
+//       charI = 1;
+//       if (i === charI) {
+//         charI ++;
+//       }
+//     }
+//     // declaring the temp variables to facilitate shuffling
+//     var tempA = arr[charI];
+//     var tempB = arr[i];
+
+// console.log("Index to be swapped is: " + charI);
+// console.log("======================Swaping array characters======================");
+// console.log("Swapping: '" + arr[charI] + "' with '" + arr[i] + "'");
+
+//       // Swap the indexes
+// console.log(arr);
+//     arr[i] = tempA;
+//     arr[charI] = tempB;
+// console.log(arr);
+//   }
+//   passwd = arr.join('');
+// console.log(passwd);
+// }
 
 // Add event listener to generate button
 // generateBtn.addEventListener("click", writePassword());

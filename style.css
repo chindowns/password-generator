@@ -121,6 +121,10 @@ button[disabled] {
   overflow: hidden;
 }
 
+#begin {
+  text-align: center;
+  color: darkgreen;
+}
 
 
 @media (max-width: 690px) {
