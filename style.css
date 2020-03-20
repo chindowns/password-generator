@@ -41,6 +41,9 @@ header {
   max-width: 800px;
   padding: 30px 40px;
 }
+.card-header {
+  text-align: center
+}
 
 .card-header::after {
   content: " ";
@@ -102,7 +105,7 @@ button[disabled] {
   -moz-appearance: none;
   appearance: none;
   border: none;
-  display: block;
+  display: none;
   width: 100%;
   padding-top: 15px;
   padding-left: 15px;
@@ -117,6 +120,8 @@ button[disabled] {
   resize: none;
   overflow: hidden;
 }
+
+
 
 @media (max-width: 690px) {
   .btn {
