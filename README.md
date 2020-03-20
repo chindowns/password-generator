@@ -18,7 +18,7 @@ Then the password box is displayed with the generated password.
 
 ## Site Picture
 
-![Site](screen-shot.jpg) 
+![Site](assets/screen-shot.jpg) 
 
 
 ## Technologies Used
@@ -33,9 +33,8 @@ Then the password box is displayed with the generated password.
 ## Code Snippet
 The application had a tendency to repeat a sequence of character types.  To make the password more random, I tried converting the password string to an array then use Math.random to shuffle the array indexes.  This resulted in undefined indexes which shortened the requested password.  To resolve the issue, I used the array sort function and subtracted 0.5 from athe random function to create a random sort.  I then joined that back into a string to pass back to writePassword.
 
-html
-'''
-  
+```javascript
+
   // Shuffle password string to ensure the characters are random
   shufflePasswdStr();
   return passwd;
@@ -55,8 +54,7 @@ function shufflePasswdStr() {
   return;
 }
 
-
-'''
+```
 
 ## Author Links
 ### Michael Downs
