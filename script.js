@@ -87,13 +87,17 @@ function generatePassword(){
 }
 
 function shufflePasswdStr() {
-  var arr = passwd.split('');           // Convert String to array
+  // Convert String to array
+  var arr = passwd.split('');
   
+  // Random Sort
   arr.sort(function() {
     return 0.5 - Math.random();
-  });  
-  passwd = arr.join('');                // Convert Array to string
-  return passwd;                        // Return shuffled string
+  });
+
+  // Convert Array to string
+  passwd = arr.join('');
+  return;
 }
 
 // Add event listener to generate button
