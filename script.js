@@ -16,6 +16,23 @@ function writePassword() {
 
 }
 
+// Set the length of your password.  It must be at least 8 characters and no more than 128.
+function askPassLength() {
+  while (passLength < 8 || passLength > 128) {
+    passLength = prompt("Set the length of your randomly generated password.\nIt has to be between 8 and 128.");
+
+    if (passLength === null) { 
+      alert("You cancelled the generation of your secure password.");
+      break;
+    }
+         
+    else if (passLength < 8 || passLength > 128) {
+      passLength = prompt("You must enter a number between 8 and 128!");
+    }
+  }
+}
+
+
 function generatePassword(){
   document.getElementById("password").style.display = "block";
   askPassLength();
@@ -67,23 +84,9 @@ function chngPasswdStr () {
   
 }
 
-// Set the length of your password.  It must be at least 8 characters and no more than 128.
-function askPassLength() {
-  while (passLength < 8 || passLength > 128) {
-    passLength = prompt("Set the length of your randomly generated password.\nIt has to be between 8 and 128.");
 
-    if (passLength === null) { 
-      alert("You cancelled the generation of your secure password.");
-      break;
-    }
-         
-    else if (passLength < 8 || passLength > 128) {
-      passLength = prompt("You must enter a number between 8 and 128!");
-    }
-  }
-}
 
 
 
 // Add event listener to generate button
-generateBtn.addEventListener("click", writePassword());
+// generateBtn.addEventListener("click", writePassword());
