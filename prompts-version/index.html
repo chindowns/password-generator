@@ -18,23 +18,7 @@
           <h2>Generate a Password</h2>
         </div>
         <div class="card-body">
-          <form id="begin">
-            <div class="form-group">
-              <label >Enter password length.<br>
-                  It has to be between 8 and 128.</label>
-              <input type="text" class="form-control" id="password-length" aria-describedby="emailHelp">
-            </div>
-            <div id="checkBox" class="form-group">  
-              <input type="checkbox" class="form-check-input" value="" id="special">
-              <label for="special" class="form-check-label">Special Characters</label>
-              <br>
-              <input type="checkbox" class="form-check-input" value="" id="numbers">
-              <label for="numbers" class="form-check-label">Use Numbers</label>
-              <br>
-              <input type="checkbox" class="form-check-input" value="" id="upper">
-              <label for="upper" class="form-check-label">Use Upper Case Letters</label>
-            </div>
-          </form>
+          <h5 id="begin">Press the Red Generate Button to Begin</h5>
           <textarea
             readonly
             id="password"
@@ -43,8 +27,7 @@
           ></textarea>
         </div>
         <div class="card-footer">
-          <!-- <button id="generate" class="btn" onclick="writePassword()">Generate Password</button> -->
-          <button id="generate" class="btn">Generate Password</button>
+          <button id="generate" class="btn" onclick="writePassword()">Generate Password</button>
         </div>
       </div>
     </div>

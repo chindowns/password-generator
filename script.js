@@ -1,11 +1,9 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
-var passLength;
-var specialChar = ["~", "!", "@", "#", "$", "%<^", "&", "*", "(", ")", "-", "_", "+", "<", ">"];
-var upperChar = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
-var numberChar = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
-var lowerChar = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
-var passwd = "";
+var specialArr = ["~", "!", "@", "#", "$", "%<^", "&", "*", "(", ")", "-", "_", "+", "<", ">"];
+var upperArr = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
+var numberArr = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+var lowerArr = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 
 // Write password to the #password input
 function writePassword() {
@@ -13,86 +11,56 @@ function writePassword() {
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
-
-}
-
-// Set the length of your password.  It must be at least 8 characters and no more than 128.
-function askPassLength() {
-  passLength = 0;
-  while (passLength < 8 || passLength > 128) {
-    passLength = prompt("Set the length of your randomly generated password.\nIt has to be between 8 and 128.");
-
-    // Cancels the operation when the user selects cancel and alerts the user the operation was canceled
-    if (passLength === null) { 
-      alert("You cancelled the generation of your secure password.");
-      break;
-    }
-         
-    else if (passLength < 8 || passLength > 128) {
-      passLength = prompt("You must enter a number between 8 and 128!");
-    }
-  }
-  return;
 }
 
 function generatePassword(){
   // Ask for password length
-  
-  askPassLength();
+  event.preventDefault();
+  var useSpecial = document.getElementById("special").checked;
+  var useNumbers = document.getElementById("numbers").checked;
+  var useUpper = document.getElementById("upper").checked;
+  var requestLength = document.getElementById("password-length").value;
 
-  // Cancels generation request if the user selects cancel in askPassLength function
-  if (passLength === null) { 
+  // Validate the length of the password
+  while (requestLength < 8 || requestLength > 128) {
+    alert("You must enter a number between 8 and 128!");
     return;
   }
-
+  
   // Hides the beginning instruction block on the application display and shows the password block
   document.getElementById("begin").style.display = "none";
   document.getElementById("password").style.display = "block";
 
-  // Clearing passwd
-  passwd = "";
-
-  createPassword();
+  // Create the password from the user requested arrays
+  var passwd = ""
   
-  // Shuffle password string to ensure the characters are random
-  shufflePasswdStr();
-  return passwd;
-}
-
-function createPassword() {
-  // Prompt for character set options
-  var confSpecial = confirm("Use Special Characters?");
-  var confNumbers = confirm("Use Numbers?");
-  var confUpper = confirm("Use Upper Case Characters?");
-  
-  for (passwd.length; passwd.length < passLength; passwd.length) {
+  for (passwd.length; passwd.length < requestLength; passwd.length) {
     // Randomly adds a character from the 
-    passwd += lowerChar[Math.floor(Math.random()*lowerChar.length)];
+    passwd += lowerArr[Math.floor(Math.random()*lowerArr.length)];
 
     // If user Conirms using Uppercase letters & the length of the password is 
     // not = the user requested password length then 
-    // randomly generate an upperChar and add it to password array
-    if (confUpper === true && passwd.length < passLength) {
-      passwd += upperChar[Math.floor(Math.random()*upperChar.length)];
+    // randomly generate an upperArr and add it to password array
+    if (useUpper === true && passwd.length < requestLength) {
+      passwd += upperArr[Math.floor(Math.random()*upperArr.length)];
     }
 
     // If user Conirms using Numbers & the length of the password is 
     // not = the user requested password length then 
-    // randomly generate an numberChar and add it to password array
-    if (confNumbers === true && passwd.length < passLength) {
-      passwd += numberChar[Math.floor(Math.random()*numberChar.length)];
+    // randomly generate an numberArr and add it to password array
+    if (useNumbers === true && passwd.length < requestLength) {
+      passwd += numberArr[Math.floor(Math.random()*numberArr.length)];
     }
 
     // If user Conirms using Special Characters & the length of the password is 
     // not = the user requested password length then 
-    // randomly generate a specialChar from theand add it to password string
-    if (confSpecial === true && passwd.length < passLength) {
-      passwd += specialChar[Math.floor(Math.random()*specialChar.length)];
+    // randomly generate a specialArr from theand add it to password string
+    if (useSpecial === true && passwd.length < requestLength) {
+      passwd += specialArr[Math.floor(Math.random()*specialArr.length)];
     }
   }
-}
-
-function shufflePasswdStr() {
+  
+  // Shuffle password string to ensure the characters are in a random order
   // Convert String to array
   var arr = passwd.split('');
 
@@ -103,8 +71,9 @@ function shufflePasswdStr() {
 
   // Convert Array to string
   passwd = arr.join('');
-  return;
+
+  return passwd;
 }
 
 // Add event listener to generate button
-// generateBtn.addEventListener("click", writePassword());
+generateBtn.addEventListener("click", writePassword);

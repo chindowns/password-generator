@@ -122,14 +122,8 @@ button[disabled] {
 }
 
 #begin {
-  text-align: left;
+  text-align: center;
   color: darkgreen;
-  margin: auto auto;
-  width: 50%;
-}
-
-#checkBox {
-  margin-left:25px;
 }
 
 
@@ -148,16 +142,5 @@ button[disabled] {
 @media (max-width: 500px) {
   .btn {
     font-size: 0.8rem;
-  }
-  #begin {
-    text-align: left;
-    color: darkgreen;
-    margin: 0 0;
-    padding: 0 0;
-    width: 100%;
-  }
-  
-  #checkBox {
-    margin:0;
   }
 }
